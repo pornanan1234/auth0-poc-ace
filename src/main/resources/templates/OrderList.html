@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order List </title>
+    <!--/*/ <th:block th:include="head :: head"/> /*/-->
+</head>
+<body id="samples">
+<div th:replace="menu :: menu"></div>
+
+
+<div id="content" class="container">
+
+    <div>
+        <h2>Order History </h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Order Number</th>
+            <th>Product</th>
+            <th>RDD</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>2100000001</th>
+            <th>Mobil 1</th>
+            <th>01-01-2021</th>
+            <th>New</th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>2100000004</th>
+            <th>Mobil 1 +</th>
+            <th>01-05-2021</th>
+            <th>On the way</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>2100000010</th>
+            <th>Mobil 1</th>
+            <th>01-01-2021</th>
+            <th>completed</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

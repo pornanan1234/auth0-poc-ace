@@ -1,0 +1,37 @@
+server:
+  port: 3000
+
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: KYHxJQB423XMKefDU63l1a3RdBTEhjip
+            client-secret: gCccWV16oJ2l5K5fQ9lSrDNn3vbG1VPHG-7OnxqVhcnGKbzsRfycK6aqjNX-rdju
+            grant_type: authorization_code
+            token_endpoint_auth_method: none
+            scope:
+              - openid
+              - profile
+              - email
+              - read
+        provider:
+          auth0:
+          # trailing slash is important!
+            issuer-uri: https://abacpoc.us.auth0.com/
+            authorization-uri: https://abacpoc.us.auth0.com/authorize
+            token-uri: https://abacpoc.us.auth0.com/oauth/token
+            user-info-uri: https://abacpoc.us.auth0.com/userinfo
+            jwk-set-uri: https://abacpoc.us.auth0.com/.well-known/jwks.json
+
+okta:
+  oauth2: postLogoutRedirectUri=https://pwrweb.azurewebsites.net/
+  groupsClaim: groups
+
+http:
+  logout:
+    delete-cookies: JSESSIONID
+

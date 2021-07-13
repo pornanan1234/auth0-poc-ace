@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Offer Page from Customer Offer service</title>
+    <!--/*/ <th:block th:include="head :: head"/> /*/-->
+</head>
+<body id="samples">
+<div th:replace="menu :: menu"></div>
+
+
+<div id="content" class="container">
+
+    <div>
+        <h2>Product Catalog For customergroup = <span th:text="${customergroup}"></span></h2>
+    </div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Plant</th>
+        <th>Price</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${results}">
+        <td th:text="${item.getId()}">Key</td>
+        <td th:id="${'claim-' + item.getProduct()}" th:text="${item.getProduct()}">Product</td>
+        <td th:id="${'claim-' + item.getPlant()}" th:text="${item.getPlant()}">Plant</td>
+        <td th:id="${'claim-' + item.getPrice()}" th:text="${item.getPrice()}">Price</td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

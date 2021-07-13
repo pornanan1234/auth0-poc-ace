@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <!--/*/ <th:block th:include="head :: head"/> /*/-->
+</head>
+<body id="samples">
+<div th:replace="menu :: menu"></div>
+
+
+<div id="content" class="container">
+
+    <div>
+        <h2>Invoice </h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Invoice</th>
+            <th>Product</th>
+            <th>OrderNumber</th>
+            <th>POnumber</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>9xxxxxxx</th>
+            <th>Mobil 1</th>
+            <th>11xxxxxxx</th>
+            <th>PO1 </th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>9yyyyyyy</th>
+            <th>Mobil 1+</th>
+            <th>11yyyyyyyy</th>
+            <th>PO2</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>9zzzzzzz</th>
+            <th>Mobil 1 + 1 </th>
+            <th>11zzzzzzzz</th>
+            <th>PO3</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

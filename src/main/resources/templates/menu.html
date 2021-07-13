@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body id="samples">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="menu">
+    <a class="navbar-brand" href="#">Example</a>
+
+    <!-- Hamburger button -->
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+
+            <!--/* If the user is logged in, show the profile link */-->
+            <li class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/profile}">Profile</a>
+            </li>
+            <li class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/ProductCatalog}">ProductCatalog</a>
+            </li>
+            <li class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{http://localhost:5000/}" target="_blank">SSP</a>
+            </li>
+
+
+            <li  sec:authorize="hasAuthority('HelpDesk')" class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{https://xom-poc-admin.okta.com/admin/dashboard}" target="_blank">User Management</a>
+            </li>
+ <!--            = groups in okta-->
+            <li  sec:authorize="hasAuthority('XomPFAdmin')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{https://customerparnterfunction.azurewebsites.net/}" target="_blank">User PF Management</a>
+            </li>
+            <!--            = groups in okta-->
+            <li  sec:authorize="hasAuthority('PricingAdmin')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{https://PDS-OKTA.azurewebsites.net/}" target="_blank">PricingAdmin</a>
+            </li>
+            <li  sec:authorize="hasAuthority('CustomerOfferAdmin')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{https://CPC-OKTA.azurewebsites.net/}" target="_blank">Catalog Admin</a>
+            </li>
+
+            <li  sec:authorize="hasAnyAuthority('DCP','LubeCustomer','FuelCustomer','GMBCustomer')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+
+                <a class="nav-link" th:href="@{/OrderCreate}">Order Create</a>
+            </li>
+            <li  sec:authorize="hasAnyAuthority('Employee','LubeCustomer','FuelCustomer','GMBCustomer')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/OrderList}">OrderList</a>
+            </li>
+
+            <li  sec:authorize="hasAnyAuthority('FuelCustomer','DCP')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/SMS}" >SMS</a>
+
+            </li>
+
+
+            <li  sec:authorize="hasAnyAuthority('LubeCustomer','DCP')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/ASR}" >ASR</a>
+
+            </li>
+
+            <li  sec:authorize="hasAnyAuthority('Distributors','BuybackDistributor','DCP')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/Logistic}" >Logistic</a>
+            </li>
+
+            <li  sec:authorize="hasAnyAuthority('AccountCustomer','ARDCP')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/InvoiceList}" >InvoiceList</a>
+            </li>
+            <li  sec:authorize="hasAuthority('Employee')"  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+
+                <a class="nav-link" th:href="@{/Report}" >Report</a>
+            </li>
+
+            <li  class="nav-item"th:if="${#authorization.expression('isAuthenticated()')}">
+                <a class="nav-link" th:href="@{/ContactUs}" >ContactUs</a>
+            </li>
+        </ul>
+
+        <!--/* If the user is logged in, show the logout button */-->
+        <form method="post" th:action="@{/logout}" th:if="${#authorization.expression('isAuthenticated()')}" class="navbar-form navbar-right">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button id="logout-button" type="submit" class="btn btn-danger">Logout</button>
+        </form>
+
+
+        <form method="get" th:action="@{/oauth2/authorization/okta}" th:unless="${#authorization.expression('isAuthenticated()')}">
+            <button id="login-button" class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+</nav>
+
+</body>
+</html>

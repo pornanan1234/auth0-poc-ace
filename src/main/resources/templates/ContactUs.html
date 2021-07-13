@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <!--/*/ <th:block th:include="head :: head"/> /*/-->
+</head>
+<body id="samples">
+<div th:replace="menu :: menu"></div>
+
+
+<div id="content" class="container">
+
+    <div>
+        <h2>List of Contacts </h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Working Hours</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>Thailand</th>
+            <th>th@xxxx.com</th>
+            <th>111-1111-1111</th>
+            <th>8:00 - 17:00</th>
+        </tr>
+        <tr>
+            <th>2</th>
+            <th>Singapore</th>
+            <th>SG@xxxx.com</th>
+            <th>111-1111-1112</th>
+            <th>8:00 - 17:00</th>
+        </tr>
+        <tr>
+            <th>3</th>
+            <th>USA</th>
+            <th>USA@xxxx.com</th>
+            <th>333-1111-1111</th>
+            <th>8:00 - 17:00</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
